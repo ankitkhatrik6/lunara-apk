@@ -183,8 +183,24 @@
     @media (max-width: 860px) {
       .hero-grid { grid-template-columns: 1fr; }
       .features, .steps { grid-template-columns: 1fr; }
+      .feature-lead { grid-column: auto; }
       .nav-links a:not(.btn) { display: none; }
       .shot-wrap { margin-top: 12px; }
+      .platform-inner { align-items: flex-start; flex-direction: column; }
+      .platforms { width: 100%; max-width: none; }
+    }
+    @media (max-width: 560px) {
+      .container { padding: 0 18px; }
+      .nav-inner { height: 68px; }
+      .brand { font-size: 18px; }
+      .brand img { width: 30px; height: 30px; }
+      .btn { width: 100%; justify-content: center; }
+      .hero-grid { gap: 42px; }
+      .hero-note { text-align: center; }
+      .trust-row { justify-content: center; gap: 12px; }
+      .platforms { grid-template-columns: 1fr; }
+      .shot-phone { width: min(290px, 82vw); height: min(590px, 166vw); }
+      section { padding: 72px 0; }
     }
   </style>
 </head>
