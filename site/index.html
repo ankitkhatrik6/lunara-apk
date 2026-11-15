@@ -71,8 +71,6 @@
     .btn-green:hover { background: #d7fa82; transform: translateY(-2px); box-shadow: 0 12px 30px rgba(201, 243, 107, .2); }
     .btn-black { background: #fff; color: #000; }
     .btn-black:hover { background: #e8e8e8; transform: scale(1.04); box-shadow: 0 8px 30px rgba(255, 255, 255, .25); }
-    .platform-nav { gap: 8px; }
-    .platform-nav i { color: #000; font-size: 15px; }
     .repo-btn i { font-size: 15px; }
     .btn-ghost { background: transparent; color: var(--text); border: 1px solid #3a3a3a; }
     .btn-ghost:hover { border-color: var(--text); transform: scale(1.03); }
@@ -173,6 +171,20 @@
     .step .num { width: 40px; height: 40px; border-radius: 12px; background: var(--green); color: #000; display: grid; place-items: center; font-weight: 900; font-size: 18px; margin-bottom: 16px; }
     .step h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
     .step p { color: var(--text-dim); font-size: 14.5px; }
+    .install-guides { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .install-guide { padding: 30px; border: 1px solid var(--divider); border-radius: 14px; background: linear-gradient(145deg, rgba(36,36,36,.94), rgba(18,18,18,.94)); }
+    .install-guide.android { border-color: rgba(201,243,107,.28); }
+    .install-guide.ios { border-color: rgba(240,201,139,.28); }
+    .install-title { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .install-title i { color: var(--accent); font-size: 22px; width: 24px; text-align: center; }
+    .install-guide.ios .install-title i { color: var(--warm); }
+    .install-title h3 { font-size: 22px; }
+    .install-intro { color: var(--text-dim); font-size: 14px; margin-bottom: 22px; }
+    .install-list { list-style: none; display: grid; gap: 16px; counter-reset: install-step; }
+    .install-list li { position: relative; padding-left: 38px; color: var(--text-dim); font-size: 14px; }
+    .install-list li::before { counter-increment: install-step; content: counter(install-step); position: absolute; left: 0; top: 0; width: 24px; height: 24px; border-radius: 8px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 800; }
+    .install-list strong { color: var(--text); font-weight: 700; }
+    .install-note { margin-top: 22px; padding: 12px 14px; border-left: 2px solid var(--warm); background: rgba(240,201,139,.07); color: #c9d0c8; font-size: 12px; }
 
     .cta-final { text-align: center; }
     .cta-final h2 { font-size: clamp(32px, 5vw, 54px); font-weight: 900; letter-spacing: -0.035em; margin-bottom: 16px; }
@@ -185,7 +197,7 @@
 
     @media (max-width: 860px) {
       .hero-grid { grid-template-columns: 1fr; }
-      .features, .steps { grid-template-columns: 1fr; }
+      .features, .steps, .install-guides { grid-template-columns: 1fr; }
       .feature-lead { grid-column: auto; }
       .nav-links a:not(.btn) { display: none; }
       .shot-wrap { margin-top: 12px; }
@@ -220,14 +232,6 @@
       <div class="nav-links">
         <a href="#features">Features</a>
         <a href="#get">Get it</a>
-        <a class="btn btn-black btn-nav platform-nav" href="https://github.com/ankitkhatrik6/lunara/releases/latest" target="_blank" rel="noopener">
-          <i class="fa fa-android" aria-hidden="true"></i>
-          Android
-        </a>
-        <a class="btn btn-black btn-nav platform-nav" href="https://github.com/ankitkhatrik6/lunara.ipa/releases/latest" target="_blank" rel="noopener">
-          <i class="fa fa-apple" aria-hidden="true"></i>
-          iOS
-        </a>
       </div>
     </div>
   </nav>
@@ -343,25 +347,40 @@
   <section id="get" style="padding-top:0">
     <div class="container">
       <div class="section-head">
+        <span class="section-kicker">Installation guide</span>
         <h2>Get Lunara</h2>
-        <p>Three steps and you're listening.</p>
+        <p>Choose your platform. Android installs directly; iOS requires a signer because the IPA is unsigned.</p>
       </div>
-      <div class="steps">
-        <div class="step">
-          <div class="num">1</div>
-          <h3>Download Lunara</h3>
-          <p>Choose the latest Android APK or iOS release from GitHub and start listening.</p>
-        </div>
-        <div class="step">
-          <div class="num">2</div>
-          <h3>Open a shared link</h3>
-          <p>Any Lunara link opens straight in the app — no app store in the way.</p>
-        </div>
-        <div class="step">
-          <div class="num">3</div>
-          <h3>Press play</h3>
-          <p>No sign-in, no setup. Your library, queue and lyrics are ready when you are.</p>
-        </div>
+      <div class="install-guides">
+        <article class="install-guide android">
+          <div class="install-title">
+            <i class="fa fa-android" aria-hidden="true"></i>
+            <h3>Install on Android</h3>
+          </div>
+          <p class="install-intro">The APK installs directly on Android. You do not need Google Play.</p>
+          <ol class="install-list">
+            <li><strong>Download the APK.</strong> Use the Android download button above or open the latest release on GitHub.</li>
+            <li><strong>Allow this source.</strong> If Android asks, open Settings and allow your browser or Files app to install unknown apps.</li>
+            <li><strong>Install it.</strong> Open the downloaded APK from your browser or Files, review the prompt, and tap Install.</li>
+            <li><strong>Open Lunara.</strong> Launch the app, then disable the temporary “install unknown apps” permission if you do not need it again.</li>
+          </ol>
+        </article>
+        <article class="install-guide ios">
+          <div class="install-title">
+            <i class="fa fa-apple" aria-hidden="true"></i>
+            <h3>Install on iOS</h3>
+          </div>
+          <p class="install-intro">The IPA is unsigned, so iOS needs a computer and a sideloading tool to sign and install it.</p>
+          <ol class="install-list">
+            <li><strong>Download the IPA.</strong> Get the latest file from the iOS release link and save it to a Mac or Windows PC.</li>
+            <li><strong>Install a signer.</strong> Use a trusted sideloading tool such as AltStore, Sideloadly, or another compatible IPA signer.</li>
+            <li><strong>Connect your iPhone.</strong> Plug it in by USB, trust the computer on the phone, and sign in to the tool with an Apple ID when requested.</li>
+            <li><strong>Load the IPA.</strong> Select the downloaded Lunara IPA in the signer and start the signing/install process. Keep the phone connected until it finishes.</li>
+            <li><strong>Trust the profile.</strong> On iPhone, open Settings → General → VPN &amp; Device Management, select the developer profile, and tap Trust.</li>
+            <li><strong>Launch Lunara.</strong> Open the app. Free Apple IDs typically require the sideloaded app to be refreshed periodically.</li>
+          </ol>
+          <p class="install-note"><strong>Unsigned IPA:</strong> tapping the file on an iPhone will not install it by itself. Sideloading and signing are required.</p>
+        </article>
       </div>
     </div>
   </section>
