@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lunara — Music, without the noise</title>
-  <meta name="description" content="Lunara is a GPL-3.0 music player for Android and iOS: a sign-in-free listening experience with a beautiful interface. Get it on GitHub." />
-  <meta name="theme-color" content="#0a0a0a" />
+  <title>Lunara — A quieter way to listen</title>
+  <meta name="description" content="Lunara is a beautiful, account-free music player for Android and iOS. Explore, listen, and keep your music close." />
+  <meta name="theme-color" content="#101513" />
 
   <!-- Open Graph: what shows when a Lunara link is pasted into a chat. -->
-  <meta property="og:title" content="Lunara — Music, without the noise" />
-  <meta property="og:description" content="A sign-in-free music player for Android and iOS with a premium interface. Get it on GitHub." />
+  <meta property="og:title" content="Lunara — A quieter way to listen" />
+  <meta property="og:description" content="A beautiful, account-free music player for Android and iOS." />
   <meta property="og:image" content="/assets/app-icon.png" />
   <meta property="og:type" content="website" />
 
@@ -17,27 +17,28 @@
   <link rel="apple-touch-icon" href="/assets/app-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
   <style>
     :root {
-      --green: #1ed760;
-      --green-hover: #1fdf64;
-      --black: #0a0a0a;
-      --surface: #121212;
-      --elevated: #181818;
-      --card: #242424;
-      --text: #ffffff;
-      --text-dim: #b3b3b3;
-      --divider: #282828;
+      --accent: #c9f36b;
+      --accent-soft: rgba(201, 243, 107, .12);
+      --black: #0b100e;
+      --surface: #101714;
+      --elevated: #151d19;
+      --card: #1b2721;
+      --text: #f5f8f2;
+      --text-dim: #a7b3aa;
+      --divider: rgba(214, 235, 218, .12);
+      --warm: #f0c98b;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: var(--black);
       color: var(--text);
       line-height: 1.6;
@@ -66,8 +67,8 @@
       transition: transform .15s ease, background .2s ease, box-shadow .2s ease;
       cursor: pointer; border: none; white-space: nowrap;
     }
-    .btn-green { background: var(--green); color: #000; }
-    .btn-green:hover { background: var(--green-hover); transform: scale(1.04); box-shadow: 0 8px 30px rgba(30, 215, 96, .35); }
+    .btn-green { background: var(--accent); color: #10150e; }
+    .btn-green:hover { background: #d7fa82; transform: translateY(-2px); box-shadow: 0 12px 30px rgba(201, 243, 107, .2); }
     .btn-black { background: #fff; color: #000; }
     .btn-black:hover { background: #e8e8e8; transform: scale(1.04); box-shadow: 0 8px 30px rgba(255, 255, 255, .25); }
     .btn-ghost { background: transparent; color: var(--text); border: 1px solid #3a3a3a; }
@@ -87,13 +88,14 @@
     .eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 7px 13px; border-radius: 9px; font-size: 12px; font-weight: 700;
-      color: var(--green); background: rgba(30, 215, 96, .10); border: 1px solid rgba(30, 215, 96, .25);
+      color: var(--accent); background: var(--accent-soft); border: 1px solid rgba(201, 243, 107, .25);
       margin-bottom: 24px;
     }
-    .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px var(--green); }
-    h1 { font-size: clamp(42px, 6vw, 74px); line-height: 1.03; font-weight: 900; letter-spacing: -0.035em; margin-bottom: 22px; }
+    .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+    h1, h2, h3, .brand { font-family: 'Space Grotesk', sans-serif; }
+    h1 { font-size: clamp(42px, 6vw, 74px); line-height: 1.03; font-weight: 700; letter-spacing: 0; margin-bottom: 22px; }
     h1 .grad {
-      background: linear-gradient(120deg, #1ed760, #57e39a 60%, #1ed760);
+      background: linear-gradient(120deg, var(--accent), #f0c98b 58%, var(--accent));
       -webkit-background-clip: text; background-clip: text; color: transparent;
     }
     .lede { font-size: 19px; color: var(--text-dim); max-width: 520px; margin-bottom: 34px; }
@@ -125,7 +127,7 @@
     .shot-btn:hover { border-color: var(--text); transform: scale(1.06); }
     .shot-dots { display: flex; gap: 8px; justify-content: center; }
     .shot-dots button { width: 8px; height: 8px; border-radius: 50%; border: none; background: #3a3a3a; cursor: pointer; padding: 0; transition: background .2s, transform .2s; }
-    .shot-dots button.on { background: var(--green); transform: scale(1.25); }
+    .shot-dots button.on { background: var(--accent); transform: scale(1.25); }
 
     section { padding: 96px 0; }
     .section-head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
